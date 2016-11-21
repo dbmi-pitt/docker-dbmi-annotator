@@ -147,6 +147,10 @@ Clean docker containers:
 $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -a -q)
 
+Volume inspect:
+
+$ docker volume inspect postgres-volume
+
 ######################################################################
 Deploy DBMI-Annotator on production mode
 ######################################################################
@@ -155,7 +159,7 @@ Deploy DBMI-Annotator on production mode
 
 (2) Create local volume for postgres data mount point
 
-$ docker volume create --name postgres-data -d local
+$ docker volume create --name postgres-volume -d local
 
 (3) Run dbmi-annotator with all dependencies in docker container
 

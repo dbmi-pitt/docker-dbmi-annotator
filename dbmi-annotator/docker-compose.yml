@@ -27,7 +27,7 @@ services:
             - ELASTICSEARCH_HOST=elasticsearch
         depends_on: 
             - "elasticsearch"
-        command: bash -c "sleep 10; python /home/yin2/annotator-store/run.py"
+        command: bash -c "sleep 10; python run.py"
         ports:
             - 5000:5000
         container_name: "annotator-store"
