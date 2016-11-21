@@ -120,7 +120,7 @@ $ npm install
 (3) Create config.js and modify
 
 $ cp config/config.sample.js config/config.js
-$ browserify app.js -o public/dbmiannotator/js/app.bundle.js
+$ browserify config/production-app.js -o /<path to>/dbmi-annotator/public/dbmiannotator/js/app.bundle.js
 
 (4) Build docker image dbmi-annotator
 
@@ -152,7 +152,12 @@ Deploy DBMI-Annotator on production mode
 ######################################################################
 
 (1) Install docker and docker-compose
-(2) Run dbmi-annotator with all dependencies in docker container
+
+(2) Create local volume for postgres data mount point
+
+$ docker volume create --name postgres-data -d local
+
+(3) Run dbmi-annotator with all dependencies in docker container
 
 $ cd dbmi-annotator
 $ docker-compose up
