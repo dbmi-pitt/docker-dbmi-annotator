@@ -4,6 +4,9 @@ volumes:
     postgres-volume:
         external: true
 
+    elasticsearch-volume:
+        external: true
+
 services:
     postgres:   
         image: yin2/postgres-9.3:latest
@@ -17,7 +20,7 @@ services:
         image: yin2/elasticsearch-1.7:1.7.3
         container_name: "elasticsearch"
         volumes:
-            - ./elasticsearch-data:/elasticsearch/data
+            - elasticsearch-volume:/elasticsearch/data
         networks:
             - app-net
 
