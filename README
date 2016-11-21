@@ -1,0 +1,159 @@
+######################################################################
+Build dependencies within docker container for DBMI-Annotator
+######################################################################
+
+Description: This repository holds all Dockerfile as dependencies of dbmi-annotator to built 
+
+Author: Yifan Ning, University of Pittsburgh
+
+Environment: Ubuntu 14.04/15.10, docker > 1.9 
+
+----------------------------------------------------------------------
+Install docker and docker-compose
+----------------------------------------------------------------------
+
+(1) Install docker 
+sudo apt-get install docker
+
+(2) Install specific version of docker-compose:
+$ cd
+$ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+$ sudo mv docker-compose /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+Reference: http://www.dynomitedb.com/docs/dynomite/v0.5.7/install-docker-ubuntu-14-04/ 
+
+Install default version of docker-compose based on Ubuntu kernel version
+sudo pip install docker-compose
+
+----------------------------------------------------------------------
+Build Postgres
+----------------------------------------------------------------------
+
+Build:
+
+(1) Install postgres 9.3
+(2) Create user 'dbmiannotator' and database 'dbmiannotator'
+(3) Execute script rdb-postgres-schema.sql to create table schema
+(4) Execute script rdb-postgres-initial.sql to initialize plugins information
+(5) build docker image <dockerhub>/postgres-9.3:latest
+
+$ cd postgres-9.3
+$ docker build -t <dockerhub>/postgres-9.3:latest .
+
+Optional: run independently on localhost and port 5432 after built:
+$ docker run -p 0.0.0.0:5432:5432 -d --name postgres <dockerhub>/postgres-9.3
+
+Reference: 
+https://docs.docker.com/engine/examples/postgresql_service/
+
+----------------------------------------------------------------------
+Build Elasticsearch
+----------------------------------------------------------------------
+
+Build:
+
+(1) Install Java JDK 8 (Oracle) and set JAVA_HOME environment variable
+(2) Install elasticsearch 1.7.3
+(3) Install plugin head and build docker images <dockerhub>/elasticsearch-1.7:1.7.3
+(4) Build docker image <dockerhub>/elasticsearch-1.7:1.7.3
+
+$ cd elasticsearch-1.7
+$ docker build -t <dockerhub>/elasticsearch-1.7:1.7.3 .
+
+Optional: run independently on localhost and port 9200 after built:
+$ docker run -p 9200:9200 -d --name elastic <dockerhub>/elasticsearch-1.7:1.7.3
+
+----------------------------------------------------------------------
+Build Annotator-store
+----------------------------------------------------------------------
+Dependency:
+Elasticsearch 1.7.3 running on port 9200
+
+Build:
+
+(1) Download annotator store repository
+
+$ git clone https://github.com/ningyifan/annotator-store.git
+
+(2) Setup python virtual environment and build docker image 
+
+$ cd annotator-store
+$ docker --no-cache build -t <dockerhub>/annotator-store:latest .
+
+Optional: run annotator store independently on localhost and port 5000:
+ 
+$ docker run -p 0.0.0.0:5000:5000 -d --name annotator-store <dockerhub>/annotator-store python /<path to repo>/annotator-store/run.py -link <dockerhub>/elasticsearch-1.7 -e ELASTICSEARCH_HOST=elasticsearch
+
+----------------------------------------------------------------------
+Build Apache server 2.4
+----------------------------------------------------------------------
+
+Build:
+
+(1) Download and install apache2 2.4
+(2) Replace default server configuration at /etc/apache2/sites-enabled/ 
+(3) Copy and configure 
+(4) Start apache2 server
+(5) build docker image
+
+$ docker build -t <dockerhub>/apache2:2.4 .
+
+Optional: run independently on localhost and port 80
+
+$ docker run -d -p 80:80  --name=apache2 <dockerhub>/apache2:2.4
+
+----------------------------------------------------------------------
+Build nodejs server DBMI-Annotator
+----------------------------------------------------------------------
+Dependency:
+Postgres db 9.3 running on port 5432
+
+Built:
+(1) Download dbmi-annotator
+
+$ git clone https://github.com/dbmi-pitt/dbmi-annotator.git
+
+(2) Install node modules
+
+$ npm install
+
+(3) Create config.js and modify
+
+$ cp config/config.sample.js config/config.js
+$ browserify app.js -o public/dbmiannotator/js/app.bundle.js
+
+(4) Build docker image dbmi-annotator
+
+$ docker build -t <dockerhub>/dbmi-annotator:latest .
+
+(5) Push images to docker hub
+
+$ docker push <dockerhub>/dbmi-annotator:latest
+
+Optional: run dbmi-annotator on localhost:3000
+
+$ docker run -p 0.0.0.0:3000:3000 -d --name dbmi-annotator <dockerhub>/dbmi-annotator node server.js  --link postgres --link elastic -e DATABASE_URL=postgre://postgres:<pin>@0.0.0.0:5432/dbmiannotator 
+
+----------------------------------------------------------------------
+Docker Administration
+----------------------------------------------------------------------
+
+Get bash shell within container (ex. apache2):
+
+$ docker exec -it apache2 bash
+
+Clean docker containers:
+
+$ docker stop $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
+
+######################################################################
+Deploy DBMI-Annotator on production mode
+######################################################################
+
+(1) Install docker and docker-compose
+(2) Run dbmi-annotator with all dependencies in docker container
+
+$ cd dbmi-annotator
+$ docker-compose up
+

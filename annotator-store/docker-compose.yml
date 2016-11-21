@@ -1,0 +1,17 @@
+elasticsearch:
+    image: yin2/elasticsearch-1.7:1.7.3
+    ports:
+        - 9200:9200
+    container_name: "elasticsearch"
+
+annotator-store:
+    build: .
+    links:
+        - elasticsearch
+    environment:
+        - ELASTICSEARCH_HOST=elasticsearch
+
+    ports:
+        - 5000:5000
+    command: bash -c "sleep 5; python /home/yin2/annotator-store/run.py"
+    container_name: "annotator-store"
