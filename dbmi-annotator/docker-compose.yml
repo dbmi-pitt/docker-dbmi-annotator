@@ -1,14 +1,18 @@
 version: "2"
 
+volumes:
+    postgres-volume:
+        external: true
+
 services:
     postgres:   
         image: yin2/postgres-9.3:latest
         container_name: "postgres"
         volumes:
-            - ./postgres-data:/var/lib/postgresql/9.3/main
+            - postgres-volume:/var/lib/postgresql/9.3/main:Z
         networks:
             - app-net
-
+    
     elasticsearch:
         image: yin2/elasticsearch-1.7:1.7.3
         container_name: "elasticsearch"

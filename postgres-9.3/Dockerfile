@@ -31,7 +31,7 @@ RUN /etc/init.d/postgresql start && sleep 8 \
     && psql -d dbmiannotator --command "\i '/home/yin2/db-schema/rdb-postgres-initial.sql';" \ 
     && psql --command "commit;"
 
-USER root
+#USER root
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
@@ -50,7 +50,7 @@ VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql/9.3/main
 
 RUN mkdir -p /var/lib/postgresql/9.3/main && chown -R postgres:postgres /var/lib/postgresql && chmod -R 700 /var/lib/postgresql
 
-USER postgres
+#USER postgres
 
 # Set the default command to run when starting the container
 CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]

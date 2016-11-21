@@ -1,0 +1,5 @@
+# config file
+config/config.js
+
+# local mount point
+dbmi-annotator/elasticsearch-data
