@@ -15,21 +15,29 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc
 RUN apt-get update && apt-get -y -q install python-software-properties software-properties-common \
     && apt-get -y -q install postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
 
-# copy sql scripts for create and intialize dbmiannotator database
-RUN mkdir -p /home/yin2/db-schema
-COPY db-schema/rdb-postgres-schema.sql /home/yin2/db-schema/rdb-postgres-schema.sql
-COPY db-schema/rdb-postgres-initial.sql /home/yin2/db-schema/rdb-postgres-initial.sql
+# copy sql scripts for create and intialize dbmiannotator and mpevidence
+RUN mkdir -p /home/postgres/db-schema
+COPY db-schema/rdb-postgres-schema.sql /home/postgres/db-schema/rdb-postgres-schema.sql
+COPY db-schema/rdb-postgres-initial.sql /home/postgres/db-schema/rdb-postgres-initial.sql
+COPY translation /home/postgres/translation
 
-# create dbmiannotator, create tables, initial plugins 
+# create database dbmiannotator, create tables, initial plugins 
+# create database mpevidence, create tables
 USER postgres
 
 RUN /etc/init.d/postgresql start && sleep 8 \
     && psql --command "CREATE USER dbmiannotator WITH SUPERUSER PASSWORD 'dbmi2016';" \
     && createdb -O dbmiannotator dbmiannotator dbmi2016 \ 
     && psql --command "\c dbmiannotator;" \ 
-    && psql -d dbmiannotator --command "\i '/home/yin2/db-schema/rdb-postgres-schema.sql';" \ 
-    && psql -d dbmiannotator --command "\i '/home/yin2/db-schema/rdb-postgres-initial.sql';" \ 
+    && psql -d dbmiannotator --command "\i '/home/postgres/db-schema/rdb-postgres-schema.sql';" \ 
+    && psql -d dbmiannotator --command "\i '/home/postgres/db-schema/rdb-postgres-initial.sql';" \
+    && psql --command "commit;" \
+
+    && createdb -O dbmiannotator mpevidence dbmi2016 \ 
+    && psql --command "\c mpevidence;" \
+    && psql -d mpevidence --command "\i '/home/postgres/translation/mp-evidence-schema/mp_evidence_schema.sql';" \
     && psql --command "commit;"
+
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
@@ -50,3 +58,13 @@ RUN mkdir -p /var/lib/postgresql/9.3/main && chown -R postgres:postgres /var/lib
 
 # Set the default command to run when starting the container
 CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]
+
+
+# USER root
+# # Install dependencies for translation program
+# RUN apt-get install -y python-pip libpq-dev python-dev
+# RUN pip install psycopg2
+
+# # Pre load SPLs annotation to database mpevidence 
+# WORKDIR /home/postgres/translation/csv-data-loader
+# CMD [ "python", "/home/postgres/translation/csv-data-loader/loadDomeoAnnsToRDB.py"]

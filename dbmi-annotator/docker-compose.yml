@@ -15,6 +15,8 @@ services:
             - postgres-volume:/var/lib/postgresql/9.3/main:Z
         networks:
             - app-net
+        ports:
+            - 5432:5432
     
     elasticsearch:
         image: yin2/elasticsearch-1.7:1.7.3
@@ -25,12 +27,12 @@ services:
             - app-net
 
     annotator-store:
+        depends_on: 
+            - "elasticsearch"
         image: yin2/annotator-store
         environment:
             - ELASTICSEARCH_HOST=elasticsearch
-        depends_on: 
-            - "elasticsearch"
-        command: bash -c "sleep 10; python run.py"
+        command: bash -c "sleep 10s; python run.py"
         ports:
             - 5000:5000
         container_name: "annotator-store"
@@ -46,6 +48,9 @@ services:
             - app-net
 
     dbmi-annotator:
+        depends_on: 
+            - "postgres"
+            - "annotator-store"
         image: yin2/dbmi-annotator:latest
         environment:
             - PGHOST=postgres
@@ -53,8 +58,6 @@ services:
             - PGUSER=dbmiannotator
             - ELASTICSEARCH_HOST=elasticsearch
             - APACHE2_HOST=apache2
-        depends_on: 
-            - "postgres"
         container_name: "dbmi-annotator"
         networks:
             - app-net

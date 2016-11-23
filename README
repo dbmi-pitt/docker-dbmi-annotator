@@ -151,6 +151,10 @@ Volume inspect:
 
 $ docker volume inspect postgres-volume
 
+Clean all orphaned volumes
+
+$ docker volume rm $(docker volume ls -qf dangling=true)
+
 ######################################################################
 Deploy DBMI-Annotator on production mode
 ######################################################################

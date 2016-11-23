@@ -21,7 +21,7 @@ WORKDIR /home/yin2/annotator-store
 COPY . /home/yin2/annotator-store
 
 # Install dependencies
-RUN apt-get install -y php5-mcrypt python-pip
+RUN apt-get install -y python-pip
 
 RUN virtualenv -p /usr/bin/pypy /pyenv
 RUN . /pyenv/bin/activate; pip install pip==6.0.8
