@@ -171,3 +171,12 @@ $ docker volume create --name elasticsearch-volume -d local
 $ cd dbmi-annotator
 $ docker-compose up
 
+Optional: pre-load annotations from postgres DB mpevidence to elasticsearch
+
+$ docker exec -it dbmi-annotator bash
+$ cd translation/rdb-data-loader
+$ python load-rdb-annotations.py <pg hostname> <pg username> <pg password> <es hostname> <annotation author>
+
+ex. python load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
+
+

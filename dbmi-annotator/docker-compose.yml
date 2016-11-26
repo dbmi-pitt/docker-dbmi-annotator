@@ -15,8 +15,6 @@ services:
             - postgres-volume:/var/lib/postgresql/9.3/main:Z
         networks:
             - app-net
-        ports:
-            - 5432:5432
     
     elasticsearch:
         image: yin2/elasticsearch-1.7:1.7.3
