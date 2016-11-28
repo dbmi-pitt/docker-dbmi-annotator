@@ -19,7 +19,7 @@ RUN apt-get update && apt-get -y -q install python-software-properties software-
 RUN mkdir -p /home/postgres/db-schema
 COPY db-schema/rdb-postgres-schema.sql /home/postgres/db-schema/rdb-postgres-schema.sql
 COPY db-schema/rdb-postgres-initial.sql /home/postgres/db-schema/rdb-postgres-initial.sql
-COPY translation /home/postgres/translation
+COPY db-schema/mp_evidence_schema.sql /home/postgres/db-schema/mp_evidence_schema.sql
 
 # create database dbmiannotator, create tables, initial plugins 
 # create database mpevidence, create tables
@@ -35,7 +35,7 @@ RUN /etc/init.d/postgresql start && sleep 8 \
 
     && createdb -O dbmiannotator mpevidence dbmi2016 \ 
     && psql --command "\c mpevidence;" \
-    && psql -d mpevidence --command "\i '/home/postgres/translation/mp-evidence-schema/mp_evidence_schema.sql';" \
+    && psql -d mpevidence --command "\i '/home/postgres/db-schema/mp_evidence_schema.sql';" \
     && psql --command "commit;"
 
 
