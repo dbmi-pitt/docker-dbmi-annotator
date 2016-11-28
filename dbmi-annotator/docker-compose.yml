@@ -31,8 +31,6 @@ services:
         environment:
             - ELASTICSEARCH_HOST=elasticsearch
         command: bash -c "sleep 10s; python run.py"
-        ports:
-            - 5000:5000
         container_name: "annotator-store"
         networks:
             - app-net

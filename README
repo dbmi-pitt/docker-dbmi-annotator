@@ -1,5 +1,56 @@
 ######################################################################
-Build dependencies within docker container for DBMI-Annotator
+Deploy DBMI-Annotator on production mode
+######################################################################
+
+(1) Install docker(v1.12.3), docker-compose (v1.8.1) and apache (v2.4) server
+
+    Apache2 server configuration:
+
+    ## DBMI-Annotator Docker configuration ###############################
+    # proxy for docker exposed service at port 8085
+    ProxyPass /dbmiannotator http://localhost:8085/dbmiannotator
+    RewriteRule /dbmiannotator(.*) http://localhost:8085/dbmiannotator$1 [P]
+
+    # proxy for docker exposed service at port 8085 for annotator store
+    ProxyPass /annotatorstore http://localhost:8085/annotatorstore
+    RewriteRule /annotatorstore(.*) http://localhost:8085/annotatorstore$1 [P]
+
+    # stylesheet folder relocate at Document root(dailymed, PMC, wiley)
+    RewriteRule /dbmiannotator/dailymed(.*) http://localhost/DDI-labels/dailymed$1 [P]
+    RewriteRule /dbmiannotator/PMC(.*)_files/(.*) http://localhost/PMC/PMC$1_files/$2 [P]
+    RewriteRule /dbmiannotator/wiley(.*)_files/(.*) http://localhost/wiley/wiley$1_files/$2 [P]
+
+(2) Create local volume for postgres and elasticsearch data mount point
+
+    $ docker volume create --name postgres-volume -d local
+    $ docker volume create --name elasticsearch-volume -d local
+
+(3) Run dbmi-annotator with all dependencies in docker container
+
+    $ cd dbmi-annotator
+    $ docker-compose up
+
+Optional: pre-load annotations from csv to DB mpevidence 
+
+    $ python loadDomeoAnnsToRDB.py <pghostname> <pgport> <pguser> <pgpassword> <clean existing data (1: yes, 0: no)>
+
+    ex. $ python loadDomeoAnnsToRDB.py postgres 5432 dbmiannotator dbmi2016 1
+
+    1. optional: clean all data in table
+    2. preprocess csv, generate preprocess-domeo.csv
+    3. load data into schema mpevidence
+
+Optional: pre-load annotations from postgres DB mpevidence to elasticsearch
+
+    $ docker exec -it dbmi-annotator bash
+    $ cd translation/rdb-data-loader
+    $ python load-rdb-annotations.py <pg hostname> <pg username> <pg password> <es hostname> <annotation author>
+
+    ex. python load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
+
+
+######################################################################
+Build dependencies in docker image for DBMI-Annotator
 ######################################################################
 
 Description: This repository holds all Dockerfile as dependencies of dbmi-annotator to built 
@@ -120,7 +171,9 @@ $ npm install
 (3) Create config.js and modify
 
 $ cp config/config.sample.js config/config.js
-$ browserify config/production-app.js -o /<path to>/dbmi-annotator/public/dbmiannotator/js/app.bundle.js
+$ cp config/production.sample.conf config/production.conf
+
+configure postgres DB connection in production.conf
 
 (4) Build docker image dbmi-annotator
 
@@ -154,39 +207,4 @@ $ docker volume inspect postgres-volume
 Clean all orphaned volumes
 
 $ docker volume rm $(docker volume ls -qf dangling=true)
-
-######################################################################
-Deploy DBMI-Annotator on production mode
-######################################################################
-
-(1) Install docker and docker-compose
-
-(2) Create local volume for postgres and elasticsearch data mount point
-
-$ docker volume create --name postgres-volume -d local
-$ docker volume create --name elasticsearch-volume -d local
-
-(3) Run dbmi-annotator with all dependencies in docker container
-
-$ cd dbmi-annotator
-$ docker-compose up
-
-Optional: pre-load annotations from csv to DB mpevidence 
-
-$ python loadDomeoAnnsToRDB.py <pghostname> <pgport> <pguser> <pgpassword> <clean existing data (1: yes, 0: no)>
-
-ex. $ python loadDomeoAnnsToRDB.py postgres 5432 dbmiannotator dbmi2016 1
-
-1. optional: clean all data in table
-2. preprocess csv, generate preprocess-domeo.csv
-3. load data into schema mpevidence
-
-Optional: pre-load annotations from postgres DB mpevidence to elasticsearch
-
-$ docker exec -it dbmi-annotator bash
-$ cd translation/rdb-data-loader
-$ python load-rdb-annotations.py <pg hostname> <pg username> <pg password> <es hostname> <annotation author>
-
-ex. python load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
-
 
