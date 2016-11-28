@@ -171,6 +171,16 @@ $ docker volume create --name elasticsearch-volume -d local
 $ cd dbmi-annotator
 $ docker-compose up
 
+Optional: pre-load annotations from csv to DB mpevidence 
+
+$ python loadDomeoAnnsToRDB.py <pghostname> <pgport> <pguser> <pgpassword> <clean existing data (1: yes, 0: no)>
+
+ex. $ python loadDomeoAnnsToRDB.py postgres 5432 dbmiannotator dbmi2016 1
+
+1. optional: clean all data in table
+2. preprocess csv, generate preprocess-domeo.csv
+3. load data into schema mpevidence
+
 Optional: pre-load annotations from postgres DB mpevidence to elasticsearch
 
 $ docker exec -it dbmi-annotator bash
