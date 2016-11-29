@@ -66,14 +66,16 @@ Install docker and docker-compose
 (1) Install docker 
 sudo apt-get install docker
 
-(2) Install specific version of docker-compose:
+(2) Install specific version of docker-compose (preferred):
 $ cd
-$ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+$ curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
 $ sudo mv docker-compose /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
 Reference: http://www.dynomitedb.com/docs/dynomite/v0.5.7/install-docker-ubuntu-14-04/ 
 
-Install default version of docker-compose based on Ubuntu kernel version
+Optional: Install default version of docker-compose based on Ubuntu kernel version
+Recommand use virtualenv in order to avoiding conflict of docker-compose python lib dependencies and local python denpendencies
+  
 sudo pip install docker-compose
 
 ----------------------------------------------------------------------
@@ -96,6 +98,42 @@ $ docker run -p 0.0.0.0:5432:5432 -d --name postgres <dockerhub>/postgres-9.3
 
 Reference: 
 https://docs.docker.com/engine/examples/postgresql_service/
+
+----------------------------------------------------------------------
+Build nodejs server DBMI-Annotator
+----------------------------------------------------------------------
+
+Dependency:
+Postgres db 9.3 running on port 5432
+
+Built:
+(1) Download dbmi-annotator
+
+$ git clone https://github.com/dbmi-pitt/dbmi-annotator.git
+
+(2) Install node modules
+
+$ npm install
+
+(3) Create config.js and modify
+
+$ cp config/config.sample.js config/config.js
+$ cp config/production.sample.conf config/production.conf
+
+$ cp production.sample.conf production.conf
+configure domain name and postgres DB connection information in and production.conf for production mode
+
+(4) Build docker image dbmi-annotator
+
+$ docker build -t <dockerhub>/dbmi-annotator:latest .
+
+(5) Push images to docker hub
+
+$ docker push <dockerhub>/dbmi-annotator:latest
+
+Optional: run dbmi-annotator on localhost:3000
+
+$ docker run -p 0.0.0.0:3000:3000 -d --name dbmi-annotator <dockerhub>/dbmi-annotator node server.js  --link postgres --link elastic -e DATABASE_URL=postgre://postgres:<pin>@0.0.0.0:5432/dbmiannotator 
 
 ----------------------------------------------------------------------
 Build Elasticsearch
@@ -152,40 +190,6 @@ $ docker build -t <dockerhub>/apache2:2.4 .
 Optional: run independently on localhost and port 80
 
 $ docker run -d -p 80:80  --name=apache2 <dockerhub>/apache2:2.4
-
-----------------------------------------------------------------------
-Build nodejs server DBMI-Annotator
-----------------------------------------------------------------------
-Dependency:
-Postgres db 9.3 running on port 5432
-
-Built:
-(1) Download dbmi-annotator
-
-$ git clone https://github.com/dbmi-pitt/dbmi-annotator.git
-
-(2) Install node modules
-
-$ npm install
-
-(3) Create config.js and modify
-
-$ cp config/config.sample.js config/config.js
-$ cp config/production.sample.conf config/production.conf
-
-configure postgres DB connection in production.conf
-
-(4) Build docker image dbmi-annotator
-
-$ docker build -t <dockerhub>/dbmi-annotator:latest .
-
-(5) Push images to docker hub
-
-$ docker push <dockerhub>/dbmi-annotator:latest
-
-Optional: run dbmi-annotator on localhost:3000
-
-$ docker run -p 0.0.0.0:3000:3000 -d --name dbmi-annotator <dockerhub>/dbmi-annotator node server.js  --link postgres --link elastic -e DATABASE_URL=postgre://postgres:<pin>@0.0.0.0:5432/dbmiannotator 
 
 ----------------------------------------------------------------------
 Docker Administration
