@@ -7,6 +7,9 @@ volumes:
     elasticsearch-volume:
         external: true
 
+    elastic-snapshot-volume:
+        external: true
+
 services:
     postgres:   
         image: yin2/postgres-9.3:latest
@@ -21,6 +24,7 @@ services:
         container_name: "elasticsearch"
         volumes:
             - elasticsearch-volume:/elasticsearch/data
+            - elastic-snapshot-volume:/home/dbmiannotator-elastic-snapshot
         networks:
             - app-net
 

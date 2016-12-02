@@ -34,6 +34,7 @@ RUN \
 # Define mountable directories.
 VOLUME ["/data"]
 
+COPY elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 # Mount elasticsearch.yml config
 # ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 

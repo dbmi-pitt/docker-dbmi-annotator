@@ -26,8 +26,11 @@ COPY dbmi-annotator.conf /etc/apache2/sites-enabled/
 # copy local html resources to root directory
 RUN mkdir /var/www/html/dailymed
 RUN mkdir /var/www/html/DDI-labels
+RUN mkdir /var/www/html/PMC
+
 COPY dailymed/ /var/www/html/dailymed/
 COPY DDI-labels/ /var/www/html/DDI-labels/
+COPY PMC/ /var/www/html/PMC/
 
 # debug
 #RUN ls -la /var/www/html/dailymed/*

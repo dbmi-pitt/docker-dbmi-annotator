@@ -24,6 +24,7 @@ Deploy DBMI-Annotator on production mode
 
     $ docker volume create --name postgres-volume -d local
     $ docker volume create --name elasticsearch-volume -d local
+    $ docker volume create --name elastic-snapshot-volume -d local
 
 (3) Run dbmi-annotator with all dependencies in docker container
 
