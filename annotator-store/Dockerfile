@@ -14,11 +14,11 @@ RUN apt-get install -qyy \
 
 
 # Create app directory
-RUN mkdir -p /home/yin2/annotator-store
-WORKDIR /home/yin2/annotator-store
+RUN mkdir -p /home/annotator-store
+WORKDIR /home/annotator-store
 
 # Bundle app source
-COPY . /home/yin2/annotator-store
+COPY . /home/annotator-store
 
 # Install dependencies
 RUN apt-get install -y python-pip

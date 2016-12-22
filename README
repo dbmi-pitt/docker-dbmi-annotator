@@ -187,7 +187,7 @@ $ git clone https://github.com/ningyifan/annotator-store.git
 (2) Setup python virtual environment and build docker image 
 
 $ cd annotator-store
-$ docker --no-cache build -t <dockerhub>/annotator-store:latest .
+$ docker build --no-cache -t <dockerhub>/annotator-store:latest .
 
 Optional: run annotator store independently on localhost and port 5000:
  
