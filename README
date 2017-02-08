@@ -211,8 +211,12 @@ Optional: run independently on localhost and port 80
 
 $ docker run -d -p 80:80  --name=apache2 <dockerhub>/apache2:2.4
 
-----------------------------------------------------------------------
+######################################################################
 Docker Administration
+######################################################################
+
+----------------------------------------------------------------------
+Work in container
 ----------------------------------------------------------------------
 
 Get bash shell within container (ex. apache2):
@@ -232,3 +236,31 @@ Clean all orphaned volumes
 
 $ docker volume rm $(docker volume ls -qf dangling=true)
 
+----------------------------------------------------------------------
+Backup elasticsearch store
+----------------------------------------------------------------------
+
+(1) create elasticsearch snapshot 
+
+$ docker exec -it dbmiannotator bash
+
+root@dbmiannotator# cd backup-program
+root@dbmiannotator# bash elastic-snapshot.sh elasticsearch 9200
+
+moint point (Ubuntu) is at 
+/var/lib/docker/volumes/elastic-snapshot-volume/_data
+
+Run from host (add to crontab for daily backups):
+$ docker exec dbmi-annotator bash backup-program/elastic-snapshot.sh elasticsearch 9200
+
+----------------------------------------------------------------------
+Clean and load annotations from postgres to elastico store
+----------------------------------------------------------------------
+
+Delete annotations from host:
+
+$ docker exec dbmi-annotator curl -XDELETE 'http://elasticsearch:9200/annotator/annotation/_query?q=email:test@gmail.com'
+
+Load annotations from postgres to elasticsearch from host:
+
+$ docker exec dbmi-annotator python translation/rdb-data-loader/load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
