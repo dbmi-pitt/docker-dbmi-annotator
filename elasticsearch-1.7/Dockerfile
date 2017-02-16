@@ -21,7 +21,7 @@ RUN apt-get install -y software-properties-common && \
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-ENV ES_PKG_NAME elasticsearch-1.7.3
+ENV ES_PKG_NAME elasticsearch-1.7.1
 
 # Install Elasticsearch.
 RUN \
