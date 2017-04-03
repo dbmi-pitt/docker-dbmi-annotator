@@ -140,7 +140,6 @@ $ npm install
 $ cp config/config.sample.js config/config.js
 $ cp config/production.sample.conf config/production.conf
 
-$ cp production.sample.conf production.conf
 configure domain name and postgres DB connection information in and production.conf for production mode
 
 (4) Build docker image dbmi-annotator

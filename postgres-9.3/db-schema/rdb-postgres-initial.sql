@@ -34,3 +34,4 @@ INSERT INTO plugin_relationship(set_id, plugin_id) VALUES
 	(2, 1);
 INSERT INTO plugin_relationship(set_id, plugin_id) VALUES
 	(2, 3);
+
