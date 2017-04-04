@@ -20,7 +20,7 @@ services:
             - app-net
     
     elasticsearch:
-        image: yin2/elasticsearch-1.7:1.7.3
+        image: yin2/elasticsearch-1.7:1.7.1
         container_name: "elasticsearch"
         volumes:
             - elasticsearch-volume:/elasticsearch/data
