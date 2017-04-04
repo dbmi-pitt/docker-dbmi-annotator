@@ -263,3 +263,13 @@ $ docker exec dbmi-annotator curl -XDELETE 'http://elasticsearch:9200/annotator/
 Load annotations from postgres to elasticsearch from host:
 
 $ docker exec dbmi-annotator python translation/rdb-data-loader/load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
+
+----------------------------------------------------------------------
+Docker related Issues fixing
+----------------------------------------------------------------------
+If run into error when build:
+docker not find endpoint count for network bridge: key not found in store
+
+Run following commands and rebuild image:
+$ rm -rf /var/lib/docker/network/files
+$ sudo service docker restart

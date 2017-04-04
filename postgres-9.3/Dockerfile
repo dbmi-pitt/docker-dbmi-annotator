@@ -5,16 +5,20 @@ MAINTAINER Yifan Ning <yin2@pitt.edu>
 # It should be the same key as https://www.postgresql.org/media/keys/ACCC4CF8.asc
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
 
+RUN echo "Add PostgreSQL's repository to source list"
 # Add PostgreSQL's repository. It contains the most recent stable release
 #     of PostgreSQL, ``9.3``.
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
+RUN echo "Update the Ubuntu and PostgreSQL repository indexes and install"
 # Update the Ubuntu and PostgreSQL repository indexes and install ``python-software-properties``,``software-properties-common`` and PostgreSQL 9.3
 # There are some warnings (in red) that show up during the build. You can hide
 # them by prefixing each apt-get statement with DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get -y -q install python-software-properties software-properties-common \
-    && apt-get -y -q install postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
+RUN apt-get update 
+RUN apt-get -y -q install python-software-properties software-properties-common 
+RUN apt-get -y -q install postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
 
+RUN echo "Init PostgreSQL DB schema"
 # copy sql scripts for create and intialize dbmiannotator and mpevidence
 RUN mkdir -p /home/postgres/db-schema
 COPY db-schema/rdb-postgres-schema.sql /home/postgres/db-schema/rdb-postgres-schema.sql
