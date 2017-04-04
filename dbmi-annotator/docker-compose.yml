@@ -15,12 +15,12 @@ services:
         image: yin2/postgres-9.3:latest
         container_name: "postgres"
         volumes:
-            - postgres-volume:/var/lib/postgresql/9.3/main:Z
+            - postgres-volume:/var/lib/postgresql/9.3/main
         networks:
             - app-net
     
     elasticsearch:
-        image: yin2/elasticsearch-1.7:1.7.1
+        image: yin2/elasticsearch-1.7:1.7.3
         container_name: "elasticsearch"
         volumes:
             - elasticsearch-volume:/elasticsearch/data
@@ -51,7 +51,7 @@ services:
         depends_on: 
             - "postgres"
             - "annotator-store"
-        image: yin2/dbmi-annotator:latest
+        image: yin2/dbmi-annotator:dikb.org
         environment:
             - PGHOST=postgres
             - PGDATABASE=dbmiannotator
