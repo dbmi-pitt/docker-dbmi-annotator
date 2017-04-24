@@ -161,21 +161,21 @@ Build Elasticsearch
 Build:
 
 (1) Install Java JDK 8 (Oracle) and set JAVA_HOME environment variable
-(2) Install elasticsearch 1.7.3
-(3) Install plugin head and build docker images <dockerhub>/elasticsearch-1.7:1.7.3
-(4) Build docker image <dockerhub>/elasticsearch-1.7:1.7.3
+(2) Install elasticsearch 1.7.1
+(3) Install plugin head and build docker images <dockerhub>/elasticsearch-1.7:1.7.1
+(4) Build docker image <dockerhub>/elasticsearch-1.7:1.7.1
 
 $ cd elasticsearch-1.7
-$ docker build -t <dockerhub>/elasticsearch-1.7:1.7.3 .
+$ docker build -t <dockerhub>/elasticsearch-1.7:1.7.1 .
 
 Optional: run independently on localhost and port 9200 after built:
-$ docker run -p 9200:9200 -d --name elastic <dockerhub>/elasticsearch-1.7:1.7.3
+$ docker run -p 9200:9200 -d --name elastic <dockerhub>/elasticsearch-1.7:1.7.1
 
 ----------------------------------------------------------------------
 Build Annotator-store
 ----------------------------------------------------------------------
 Dependency:
-Elasticsearch 1.7.3 running on port 9200
+Elasticsearch 1.7.1 running on port 9200
 
 Build:
 
