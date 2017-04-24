@@ -1,0 +1,89 @@
+{
+  "name" : "20170417-220002",
+  "index_version" : 263,
+  "start_time" : 1492480802126,
+  "time" : 19,
+  "number_of_files" : 1,
+  "total_size" : 129,
+  "files" : [ {
+    "name" : "__8b",
+    "physical_name" : "_99.nvm",
+    "length" : 1243,
+    "checksum" : "z2u69d",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8c",
+    "physical_name" : "_99.fdx",
+    "length" : 140,
+    "checksum" : "1huhk60",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8d",
+    "physical_name" : "_99_Lucene41_0.doc",
+    "length" : 14171,
+    "checksum" : "1c2ozie",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8e",
+    "physical_name" : "_99_Lucene410_0.dvd",
+    "length" : 224,
+    "checksum" : "11xxs3g",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8g",
+    "physical_name" : "_99.fnm",
+    "length" : 18558,
+    "checksum" : "q0b32v",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8h",
+    "physical_name" : "_99_Lucene410_0.dvm",
+    "length" : 164,
+    "checksum" : "sucypr",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8i",
+    "physical_name" : "_99.fdt",
+    "length" : 126465,
+    "checksum" : "jrpof2",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__94",
+    "physical_name" : "segments_7b",
+    "length" : 129,
+    "checksum" : "rp93an",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFwhzZWdtZW50cwAAAAMAAAAAAAAELAAAAU4AAAABA185OQlMdWNlbmU0MTD//////////wAAAAD/////////////////////AAAAAAAAAAAAAAABC3RyYW5zbG9nX2lkDTE0ODI0MzQyNzE4MDfAKJPoAAAAAAAAAABj1n3v"
+  }, {
+    "name" : "__8j",
+    "physical_name" : "_99_Lucene41_0.tim",
+    "length" : 531334,
+    "checksum" : "1hjkc80",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8k",
+    "physical_name" : "_99_Lucene41_0.pos",
+    "length" : 5223,
+    "checksum" : "1b36wfi",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8l",
+    "physical_name" : "_99_Lucene41_0.tip",
+    "length" : 5035,
+    "checksum" : "14iravd",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8m",
+    "physical_name" : "_99.nvd",
+    "length" : 7250,
+    "checksum" : "ty85fp",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__8n",
+    "physical_name" : "_99.si",
+    "length" : 429,
+    "checksum" : "51z07z",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAFc/wAAAAoJdGltZXN0YW1wDTE0OTA5Njg2NzkzNDkLbWVyZ2VGYWN0b3ICMTAKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBW1lcmdlB29zLmFyY2gFYW1kNjQTbWVyZ2VNYXhOdW1TZWdtZW50cwItMQxqYXZhLnZlcnNpb24IMS43LjBfODALamF2YS52ZW5kb3IST3JhY2xlIENvcnBvcmF0aW9uAAAADBJfOTlfTHVjZW5lNDFfMC50aW0HXzk5Lm52bQdfOTkuZmR4El85OV9MdWNlbmU0MV8wLnBvcxJfOTlfTHVjZW5lNDFfMC5kb2MTXzk5X0x1Y2VuZTQxMF8wLmR2ZBJfOTlfTHVjZW5lNDFfMC50aXAHXzk5Lm52ZAZfOTkuc2kHXzk5LmZkdBNfOTlfTHVjZW5lNDEwXzAuZHZtB185OS5mbm3AKJPoAAAAAAAAAAASN8Df"
+  } ]
+}

@@ -1,0 +1,165 @@
+{
+  "name" : "20170330-220001",
+  "index_version" : 266,
+  "start_time" : 1490925601637,
+  "time" : 18,
+  "number_of_files" : 1,
+  "total_size" : 329,
+  "files" : [ {
+    "name" : "__5u",
+    "physical_name" : "_95.cfe",
+    "length" : 350,
+    "checksum" : "1p1mnum",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6a",
+    "physical_name" : "_9a_Lucene410_0.dvd",
+    "length" : 82,
+    "checksum" : "q8o980",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6b",
+    "physical_name" : "_9a_Lucene41_0.tim",
+    "length" : 108776,
+    "checksum" : "edl8z7",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6c",
+    "physical_name" : "_9a.fdx",
+    "length" : 73,
+    "checksum" : "3z6xhc",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__59",
+    "physical_name" : "_81.cfe",
+    "length" : 350,
+    "checksum" : "aunk64",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6e",
+    "physical_name" : "_9a.fnm",
+    "length" : 15671,
+    "checksum" : "173zbw3",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6f",
+    "physical_name" : "_9a.si",
+    "length" : 428,
+    "checksum" : "q3xdjc",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAA//wAAAAoJdGltZXN0YW1wDTE0ODg0ODQ3MTQwOTQLbWVyZ2VGYWN0b3IBMQpvcy52ZXJzaW9uETMuMTMuMC04Ni1nZW5lcmljAm9zBUxpbnV4Dmx1Y2VuZS52ZXJzaW9uBjQuMTAuNAZzb3VyY2UFbWVyZ2UHb3MuYXJjaAVhbWQ2NBNtZXJnZU1heE51bVNlZ21lbnRzAi0xDGphdmEudmVyc2lvbggxLjcuMF84MAtqYXZhLnZlbmRvchJPcmFjbGUgQ29ycG9yYXRpb24AAAAMEl85YV9MdWNlbmU0MV8wLnRpbRNfOWFfTHVjZW5lNDEwXzAuZHZkB185YS5udm0HXzlhLmZkeAZfOWEuc2kHXzlhLmZubRJfOWFfTHVjZW5lNDFfMC5kb2MSXzlhX0x1Y2VuZTQxXzAucG9zEl85YV9MdWNlbmU0MV8wLnRpcBNfOWFfTHVjZW5lNDEwXzAuZHZtB185YS5udmQHXzlhLmZkdMAok+gAAAAAAAAAAF4ZTcg="
+  }, {
+    "name" : "__5c",
+    "physical_name" : "_86.cfe",
+    "length" : 350,
+    "checksum" : "n1zv2p",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6g",
+    "physical_name" : "_9a_Lucene41_0.doc",
+    "length" : 4294,
+    "checksum" : "1axerbx",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6h",
+    "physical_name" : "_9a_Lucene41_0.tip",
+    "length" : 3896,
+    "checksum" : "ocp5fa",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5f",
+    "physical_name" : "_86.cfs",
+    "length" : 41193,
+    "checksum" : "1oovqse",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5t",
+    "physical_name" : "_95.si",
+    "length" : 251,
+    "checksum" : "wllvt3",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0ODc2NzU5NTU5MzYKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMHXzk1LmNmZQdfOTUuY2ZzBl85NS5zacAok+gAAAAAAAAAAHV+SUc="
+  }, {
+    "name" : "__5h",
+    "physical_name" : "_8p.cfe",
+    "length" : 350,
+    "checksum" : "140mnak",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6i",
+    "physical_name" : "_9a.nvm",
+    "length" : 1091,
+    "checksum" : "1wa7r6x",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5w",
+    "physical_name" : "_95.cfs",
+    "length" : 33672,
+    "checksum" : "1sm1lga",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5j",
+    "physical_name" : "_81.cfs",
+    "length" : 29725,
+    "checksum" : "9me2rq",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5k",
+    "physical_name" : "_86.si",
+    "length" : 251,
+    "checksum" : "wcxlqt",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0ODc2MjY2NjAxOTkKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMGXzg2LnNpB184Ni5jZmUHXzg2LmNmc8Aok+gAAAAAAAAAAHSf+FU="
+  }, {
+    "name" : "__6j",
+    "physical_name" : "_9a_Lucene41_0.pos",
+    "length" : 1484,
+    "checksum" : "12pz5ua",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5l",
+    "physical_name" : "_81.si",
+    "length" : 251,
+    "checksum" : "1c83p86",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0ODc2MjY0NzE1MzUKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMHXzgxLmNmcwdfODEuY2ZlBl84MS5zacAok+gAAAAAAAAAAK3OanY="
+  }, {
+    "name" : "__7e",
+    "physical_name" : "segments_7e",
+    "length" : 329,
+    "checksum" : "1uo1w6d",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFwhzZWdtZW50cwAAAAMAAAAAAAAEYgAAAU8AAAAFA185YQlMdWNlbmU0MTD//////////wAAAAD/////////////////////AAAAAAAAAAADXzgxCUx1Y2VuZTQxMP//////////AAAAAP////////////////////8AAAAAAAAAAANfODYJTHVjZW5lNDEw//////////8AAAAA/////////////////////wAAAAAAAAAAA184cAlMdWNlbmU0MTD//////////wAAAAD/////////////////////AAAAAAAAAAADXzk1CUx1Y2VuZTQxMP//////////AAAAAP////////////////////8AAAAAAAAAAAAAAAELdHJhbnNsb2dfaWQNMTQ4MjQzNDI3MjE3M8Aok+gAAAAAAAAAAPBGuSU="
+  }, {
+    "name" : "__6k",
+    "physical_name" : "_9a_Lucene410_0.dvm",
+    "length" : 163,
+    "checksum" : "11pdrzn",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5p",
+    "physical_name" : "_8p.si",
+    "length" : 251,
+    "checksum" : "nra0im",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0ODc2Mjg1NjQzODUKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMGXzhwLnNpB184cC5jZnMHXzhwLmNmZcAok+gAAAAAAAAAAFWf2B4="
+  }, {
+    "name" : "__6l",
+    "physical_name" : "_9a.nvd",
+    "length" : 2618,
+    "checksum" : "1qkd4lk",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__5q",
+    "physical_name" : "_8p.cfs",
+    "length" : 53603,
+    "checksum" : "1sbg12w",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__6m",
+    "physical_name" : "_9a.fdt",
+    "length" : 23846,
+    "checksum" : "mgthfx",
+    "written_by" : "4.10.4"
+  } ]
+}

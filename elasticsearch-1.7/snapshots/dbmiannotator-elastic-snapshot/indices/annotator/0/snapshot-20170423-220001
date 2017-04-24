@@ -1,0 +1,165 @@
+{
+  "name" : "20170423-220001",
+  "index_version" : 302,
+  "start_time" : 1492999201581,
+  "time" : 21,
+  "number_of_files" : 1,
+  "total_size" : 329,
+  "files" : [ {
+    "name" : "__9y",
+    "physical_name" : "_9l.si",
+    "length" : 429,
+    "checksum" : "449451",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAFh/wAAAAoJdGltZXN0YW1wDTE0OTI3NjAzMDIxNzQLbWVyZ2VGYWN0b3ICMTAKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBW1lcmdlB29zLmFyY2gFYW1kNjQTbWVyZ2VNYXhOdW1TZWdtZW50cwItMQxqYXZhLnZlcnNpb24IMS43LjBfODALamF2YS52ZW5kb3IST3JhY2xlIENvcnBvcmF0aW9uAAAADBNfOWxfTHVjZW5lNDEwXzAuZHZtBl85bC5zaQdfOWwuZm5tB185bC5mZHQSXzlsX0x1Y2VuZTQxXzAuZG9jEl85bF9MdWNlbmU0MV8wLnRpbQdfOWwuZmR4B185bC5udmQSXzlsX0x1Y2VuZTQxXzAucG9zE185bF9MdWNlbmU0MTBfMC5kdmQSXzlsX0x1Y2VuZTQxXzAudGlwB185bC5udm3AKJPoAAAAAAAAAAAO15E1"
+  }, {
+    "name" : "__9z",
+    "physical_name" : "_9l.fdt",
+    "length" : 129149,
+    "checksum" : "1k9gj6m",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a0",
+    "physical_name" : "_9l_Lucene41_0.doc",
+    "length" : 14542,
+    "checksum" : "1k269k7",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a1",
+    "physical_name" : "_9l.fdx",
+    "length" : 140,
+    "checksum" : "1knoorn",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a2",
+    "physical_name" : "_9l_Lucene410_0.dvd",
+    "length" : 227,
+    "checksum" : "xjzrma",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__ah",
+    "physical_name" : "_ab.cfe",
+    "length" : 350,
+    "checksum" : "a6ikiq",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__ai",
+    "physical_name" : "_ad.cfs",
+    "length" : 33052,
+    "checksum" : "w4fmsc",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a5",
+    "physical_name" : "_9z.cfs",
+    "length" : 28309,
+    "checksum" : "1rpd2wg",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__aj",
+    "physical_name" : "_ad.si",
+    "length" : 251,
+    "checksum" : "g9orp7",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0OTI4NzA4Nzc1OTgKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMHX2FkLmNmcwdfYWQuY2ZlBl9hZC5zacAok+gAAAAAAAAAADqiizs="
+  }, {
+    "name" : "__ak",
+    "physical_name" : "_ab.si",
+    "length" : 251,
+    "checksum" : "rm46vr",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0OTI4NTQzNTMxNTgKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMGX2FiLnNpB19hYi5jZnMHX2FiLmNmZcAok+gAAAAAAAAAAGOGHdc="
+  }, {
+    "name" : "__ab",
+    "physical_name" : "_9l_Lucene41_0.tim",
+    "length" : 534304,
+    "checksum" : "1yoasb9",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__ad",
+    "physical_name" : "_9l.nvd",
+    "length" : 6706,
+    "checksum" : "1mf0yjz",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__af",
+    "physical_name" : "_9l_Lucene41_0.tip",
+    "length" : 4753,
+    "checksum" : "fdhhhv",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__ag",
+    "physical_name" : "_9l.nvm",
+    "length" : 1265,
+    "checksum" : "gcfww6",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a3",
+    "physical_name" : "_9l_Lucene41_0.pos",
+    "length" : 5280,
+    "checksum" : "g7p77p",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a4",
+    "physical_name" : "_9z.si",
+    "length" : 251,
+    "checksum" : "1u23wo2",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0OTI3NzQ3NDYzOTkKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMHXzl6LmNmZQZfOXouc2kHXzl6LmNmc8Aok+gAAAAAAAAAAO4UUiI="
+  }, {
+    "name" : "__a6",
+    "physical_name" : "_a2.cfs",
+    "length" : 13628,
+    "checksum" : "dwx7j7",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__a8",
+    "physical_name" : "_a2.si",
+    "length" : 251,
+    "checksum" : "11g83v9",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFxNMdWNlbmU0NlNlZ21lbnRJbmZvAAAAAQY0LjEwLjQAAAABAQAAAAgJdGltZXN0YW1wDTE0OTI3Nzg4ODk4MTQKb3MudmVyc2lvbhEzLjEzLjAtODYtZ2VuZXJpYwJvcwVMaW51eA5sdWNlbmUudmVyc2lvbgY0LjEwLjQGc291cmNlBWZsdXNoB29zLmFyY2gFYW1kNjQMamF2YS52ZXJzaW9uCDEuNy4wXzgwC2phdmEudmVuZG9yEk9yYWNsZSBDb3Jwb3JhdGlvbgAAAAMHX2EyLmNmZQdfYTIuY2ZzBl9hMi5zacAok+gAAAAAAAAAAIb5iZU="
+  }, {
+    "name" : "__a9",
+    "physical_name" : "_9l_Lucene410_0.dvm",
+    "length" : 148,
+    "checksum" : "19nsflr",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__aa",
+    "physical_name" : "_9l.fnm",
+    "length" : 18786,
+    "checksum" : "17ixjxn",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__ao",
+    "physical_name" : "segments_8e",
+    "length" : 329,
+    "checksum" : "179mmt8",
+    "written_by" : "4.10.4",
+    "meta_hash" : "P9dsFwhzZWdtZW50cwAAAAMAAAAAAAAEtAAAAXYAAAAFA185bAlMdWNlbmU0MTD//////////wAAAAD/////////////////////AAAAAAAAAAADXzl6CUx1Y2VuZTQxMP//////////AAAAAP////////////////////8AAAAAAAAAAANfYTIJTHVjZW5lNDEw//////////8AAAAA/////////////////////wAAAAAAAAAAA19hYglMdWNlbmU0MTD//////////wAAAAD/////////////////////AAAAAAAAAAADX2FkCUx1Y2VuZTQxMP//////////AAAAAP////////////////////8AAAAAAAAAAAAAAAELdHJhbnNsb2dfaWQNMTQ4MjQzNDI3MTgyNsAok+gAAAAAAAAAAJvwUfw="
+  }, {
+    "name" : "__ac",
+    "physical_name" : "_9z.cfe",
+    "length" : 350,
+    "checksum" : "1g3d8kf",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__am",
+    "physical_name" : "_ab.cfs",
+    "length" : 13722,
+    "checksum" : "c9zzl6",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__ae",
+    "physical_name" : "_a2.cfe",
+    "length" : 350,
+    "checksum" : "rc3e3q",
+    "written_by" : "4.10.4"
+  }, {
+    "name" : "__an",
+    "physical_name" : "_ad.cfe",
+    "length" : 350,
+    "checksum" : "17l83fa",
+    "written_by" : "4.10.4"
+  } ]
+}

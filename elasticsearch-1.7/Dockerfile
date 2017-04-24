@@ -38,6 +38,9 @@ COPY elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 # Mount elasticsearch.yml config
 # ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
+# copy elasticsearch data snapshots to docker
+COPY snapshots/dbmiannotator-elastic-snapshot /home/
+
 # Install HEAD plugin
 RUN \
   cd /elasticsearch && \
