@@ -38,6 +38,7 @@ Deploy DBMI-Annotator on production mode
     RewriteRule /dbmiannotator/dailymed(.*) http://localhost/DDI-labels/dailymed$1 [P]
     RewriteRule /dbmiannotator/PMC(.*)_files/(.*) http://localhost/PMC/PMC$1_files/$2 [P]
     RewriteRule /dbmiannotator/wiley(.*)_files/(.*) http://localhost/wiley/wiley$1_files/$2 [P]
+    RewriteRule /dbmiannotator/test(.*)_files/(.*) http://localhost/test/test$1_files/$2 [P]
 
 (2) Create local volume for postgres and elasticsearch data mount point
 
@@ -222,19 +223,6 @@ Get bash shell within container (ex. apache2):
 
 $ docker exec -it apache2 bash
 
-Clean docker containers:
-
-$ docker stop $(docker ps -a -q)
-$ docker rm $(docker ps -a -q)
-
-Volume inspect:
-
-$ docker volume inspect postgres-volume
-
-Clean all orphaned volumes
-
-$ docker volume rm $(docker volume ls -qf dangling=true)
-
 ----------------------------------------------------------------------
 Backup elasticsearch store
 ----------------------------------------------------------------------
@@ -273,3 +261,22 @@ docker not find endpoint count for network bridge: key not found in store
 Run following commands and rebuild image:
 $ rm -rf /var/lib/docker/network/files
 $ sudo service docker restart
+
+----------------------------------------------------------------------
+Docker commands
+----------------------------------------------------------------------
+Clean docker containers:
+
+$ docker stop $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
+
+Volume inspect:
+
+$ docker volume inspect postgres-volume
+
+Clean all orphaned volumes
+
+$ docker volume rm $(docker volume ls -qf dangling=true)
+
+Check dependent child processes of specific ps
+$ docker inspect --format='{{.Id}} {{.Parent}}' $(docker images --filter since=<parent ps Id> -q)
