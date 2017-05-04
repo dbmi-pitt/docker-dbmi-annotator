@@ -1,5 +1,5 @@
 # base.docker
-FROM ubuntu:14.04
+FROM ubuntu:15.10
 
 RUN echo "deb http://ppa.launchpad.net/pypy/ppa/ubuntu trusty main" > \
     /etc/apt/sources.list.d/pypy-ppa.list
