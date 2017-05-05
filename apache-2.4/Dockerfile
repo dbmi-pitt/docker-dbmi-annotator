@@ -27,12 +27,12 @@ COPY dbmi-annotator.conf /etc/apache2/sites-enabled/
 RUN mkdir /var/www/html/dailymed
 RUN mkdir /var/www/html/DDI-labels
 RUN mkdir /var/www/html/PMC
-RUN mkdir /var/www/html/test # for PDF sample articles
+RUN mkdir /var/www/html/DDI-pdfs # for PDF sample articles
 
 COPY dailymed/ /var/www/html/dailymed/
 COPY DDI-labels/ /var/www/html/DDI-labels/
 COPY PMC/ /var/www/html/PMC/
-COPY PMC/ /var/www/html/test/
+COPY DDI-pdfs/ /var/www/html/DDI-pdfs/
 
 # debug
 #RUN ls -la /var/www/html/dailymed/*
@@ -50,5 +50,4 @@ RUN service apache2 restart
 #EXPOSE 80
 
 # Start apache2 server
-# CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 CMD ["/usr/sbin/apache2ctl", "-D", "BACKGROUND"]
