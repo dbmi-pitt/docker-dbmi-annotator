@@ -34,11 +34,9 @@ Deploy DBMI-Annotator on production mode
     ProxyPass /annotatorstore http://localhost:8085/annotatorstore
     RewriteRule /annotatorstore(.*) http://localhost:8085/annotatorstore$1 [P]
 
-    # stylesheet folder relocate at Document root(dailymed, PMC, wiley)
+    # stylesheet folder relocate at Document root(dailymed, PMC)
     RewriteRule /dbmiannotator/dailymed(.*) http://localhost/DDI-labels/dailymed$1 [P]
     RewriteRule /dbmiannotator/PMC(.*)_files/(.*) http://localhost/PMC/PMC$1_files/$2 [P]
-    RewriteRule /dbmiannotator/wiley(.*)_files/(.*) http://localhost/wiley/wiley$1_files/$2 [P]
-    RewriteRule /dbmiannotator/test(.*)_files/(.*) http://localhost/test/test$1_files/$2 [P]
 
 (2) Create local volume for postgres and elasticsearch data mount point
 

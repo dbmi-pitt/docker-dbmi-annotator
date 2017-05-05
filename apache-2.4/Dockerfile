@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.10
  
 # Define environment variables
 #ENV DEBIAN_FRONTEND noninteractive
@@ -50,4 +50,5 @@ RUN service apache2 restart
 #EXPOSE 80
 
 # Start apache2 server
-CMD ["/usr/sbin/apache2ctl", "-D", "BACKGROUND"]
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+# CMD ["/usr/sbin/apache2ctl", "-D", "BACKGROUND"]

@@ -31,7 +31,7 @@ services:
     annotator-store:
         depends_on: 
             - "elasticsearch"
-        image: yin2/annotator-store
+        image: yin2/annotator-store:latest
         environment:
             - ELASTICSEARCH_HOST=elasticsearch
         command: bash -c "sleep 15s; python run.py"
@@ -51,7 +51,7 @@ services:
         depends_on: 
             - "postgres"
             - "annotator-store"
-        image: yin2/dbmi-annotator:dikb.org
+        image: yin2/dbmi-annotator:latest
         environment:
             - PGHOST=postgres
             - PGDATABASE=dbmiannotator
