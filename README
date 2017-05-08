@@ -25,6 +25,8 @@ Deploy DBMI-Annotator on production mode
 
     Apache2 server configuration:
 
+    RewriteEngine on
+
     ## DBMI-Annotator Docker configuration ###############################
     # proxy for docker exposed service at port 8085
     ProxyPass /dbmiannotator http://localhost:8085/dbmiannotator
@@ -38,35 +40,126 @@ Deploy DBMI-Annotator on production mode
     RewriteRule /dbmiannotator/dailymed(.*) http://localhost/DDI-labels/dailymed$1 [P]
     RewriteRule /dbmiannotator/PMC(.*)_files/(.*) http://localhost/PMC/PMC$1_files/$2 [P]
 
+    # RDF redirects
+    RewriteRule /DDI-pdfs/(.*) http://localhost:8085/DDI-pdfs/$1 [P]
+
 (2) Create local volume for postgres and elasticsearch data mount point
 
     $ docker volume create --name postgres-volume -d local
     $ docker volume create --name elasticsearch-volume -d local
     $ docker volume create --name elastic-snapshot-volume -d local
 
-(3) Run dbmi-annotator with all dependencies in docker container
+(3) Run dbmi-annotator with all dependencies in docker container, takes 20 secs for setup all services
 
     $ cd dbmi-annotator
     $ docker-compose up
 
-Optional: pre-load annotations from csv to DB mpevidence 
+######################################################################
+Docker Administration
+######################################################################
 
-    $ python loadDomeoAnnsToRDB.py <pghostname> <pgport> <pguser> <pgpassword> <clean existing data (1: yes, 0: no)>
+----------------------------------------------------------------------
+Docker clean and restart
+----------------------------------------------------------------------
 
-    ex. $ python loadDomeoAnnsToRDB.py postgres 5432 dbmiannotator dbmi2016 1
+Stop and clean all processes (required for rerun docker-compose when made modifications)
 
-    1. optional: clean all data in table
-    2. preprocess csv, generate preprocess-domeo.csv
-    3. load data into schema mpevidence
+$ bash clean-docker-ps.sh
 
-Optional: pre-load annotations from postgres DB mpevidence to elasticsearch
+----------------------------------------------------------------------
+Work in container
+----------------------------------------------------------------------
 
-    $ docker exec -it dbmi-annotator bash
-    $ cd translation/rdb-data-loader
-    $ python load-rdb-annotations.py <pg hostname> <pg username> <pg password> <es hostname> <annotation author>
+Get bash shell within container (ex. apache2):
+$ docker exec -it apache2 bash
 
-    ex. python load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
+----------------------------------------------------------------------
+Delete annotations from host:
+----------------------------------------------------------------------
 
+Truncate all data in docker containers
+$ bash recreate-docker-volumns.sh
+
+Delete annotation in docker by condition
+$ docker exec dbmi-annotator curl -XDELETE 'http://elasticsearch:9200/annotator/annotation/_query?q=email:test@gmail.com'
+
+----------------------------------------------------------------------
+Backup elasticsearch store
+----------------------------------------------------------------------
+
+(1) create elasticsearch snapshot 
+
+$ docker exec -it dbmiannotator bash
+
+root@dbmiannotator# cd backup-program
+root@dbmiannotator# bash elastic-snapshot.sh elasticsearch 9200
+
+moint point (Ubuntu) is at 
+/var/lib/docker/volumes/elastic-snapshot-volume/_data
+
+Run from host (add to crontab for daily backups):
+$ docker exec dbmi-annotator bash backup-program/elastic-snapshot.sh elasticsearch 9200
+
+
+----------------------------------------------------------------------
+Docker related Issues fixing
+----------------------------------------------------------------------
+If run into error when build:
+docker not find endpoint count for network bridge: key not found in store
+
+Run following commands and rebuild image:
+$ rm -rf /var/lib/docker/network/files
+$ sudo service docker restart
+
+----------------------------------------------------------------------
+Docker commands
+----------------------------------------------------------------------
+Clean docker containers:
+
+$ docker stop $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
+
+Volume inspect:
+
+$ docker volume inspect postgres-volume
+
+Clean all orphaned volumes
+
+$ docker volume rm $(docker volume ls -qf dangling=true)
+
+Check dependent child processes of specific ps
+$ docker inspect --format='{{.Id}} {{.Parent}}' $(docker images --filter since=<parent ps Id> -q)
+
+
+######################################################################
+Evidence base translation tool - In development (Optional)
+######################################################################
+
+$ docker exec -it dbmi-annotator bash
+$ cd translation/mp-evidence-base-ETL
+
+Optional: Annotation translation (Elasticsearch to PostgreSQL)
+
+    python loadAnnotatorAnnsToRDB.py <elastic host> <elastic port> <pg host> <pg port> <pg username> <pg password> <OPTIONS (1: clean all tables, 2 drop and recreate all tables, 0: keep existing data)>
+
+    Example:
+    $ python loadAnnotatorAnnsToRDB.py elasticsearch 9200 postgres 5432 dbmiannotator <password> 0
+
+
+Optional: Dailymed SPLs Annotation translation (CSV to PostgreSQL)
+
+    python loadDomeoAnnsToRDB.py <pg hostname> <pg port> <pg username> <pg password> <OPTIONS (1: clean all tables, 2 drop and recreate all tables, 0: keep existing data)>
+
+    Example:
+    python loadDomeoAnnsToRDB.py postgres 5432 dbmiannotator <password> 0
+
+
+Optional: pre-load annotations (postgreSQL to elasticsearch)
+
+    python load-rdb-annotations.py <pg hostname> <pg username> <pg password> <es hostname> <annotation author>
+
+    Example:
+    $ python translateRDB2Elastic.py postgres dbmiannotator <password> elasticsearch test@gmail.com
 
 ######################################################################
 Build dependencies in docker image for DBMI-Annotator
@@ -209,72 +302,3 @@ Optional: run independently on localhost and port 80
 
 $ docker run -d -p 80:80  --name=apache2 <dockerhub>/apache2:2.4
 
-######################################################################
-Docker Administration
-######################################################################
-
-----------------------------------------------------------------------
-Work in container
-----------------------------------------------------------------------
-
-Get bash shell within container (ex. apache2):
-
-$ docker exec -it apache2 bash
-
-----------------------------------------------------------------------
-Backup elasticsearch store
-----------------------------------------------------------------------
-
-(1) create elasticsearch snapshot 
-
-$ docker exec -it dbmiannotator bash
-
-root@dbmiannotator# cd backup-program
-root@dbmiannotator# bash elastic-snapshot.sh elasticsearch 9200
-
-moint point (Ubuntu) is at 
-/var/lib/docker/volumes/elastic-snapshot-volume/_data
-
-Run from host (add to crontab for daily backups):
-$ docker exec dbmi-annotator bash backup-program/elastic-snapshot.sh elasticsearch 9200
-
-----------------------------------------------------------------------
-Clean and load annotations from postgres to elastico store
-----------------------------------------------------------------------
-
-Delete annotations from host:
-
-$ docker exec dbmi-annotator curl -XDELETE 'http://elasticsearch:9200/annotator/annotation/_query?q=email:test@gmail.com'
-
-Load annotations from postgres to elasticsearch from host:
-
-$ docker exec dbmi-annotator python translation/rdb-data-loader/load-rdb-annotations.py postgres dbmiannotator dbmi2016 elasticsearch test@gmail.com
-
-----------------------------------------------------------------------
-Docker related Issues fixing
-----------------------------------------------------------------------
-If run into error when build:
-docker not find endpoint count for network bridge: key not found in store
-
-Run following commands and rebuild image:
-$ rm -rf /var/lib/docker/network/files
-$ sudo service docker restart
-
-----------------------------------------------------------------------
-Docker commands
-----------------------------------------------------------------------
-Clean docker containers:
-
-$ docker stop $(docker ps -a -q)
-$ docker rm $(docker ps -a -q)
-
-Volume inspect:
-
-$ docker volume inspect postgres-volume
-
-Clean all orphaned volumes
-
-$ docker volume rm $(docker volume ls -qf dangling=true)
-
-Check dependent child processes of specific ps
-$ docker inspect --format='{{.Id}} {{.Parent}}' $(docker images --filter since=<parent ps Id> -q)

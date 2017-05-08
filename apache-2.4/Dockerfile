@@ -29,15 +29,16 @@ RUN mkdir /var/www/html/DDI-labels
 RUN mkdir /var/www/html/PMC
 RUN mkdir /var/www/html/DDI-pdfs # for PDF sample articles
 
+# Setup resouces in container
 COPY dailymed/ /var/www/html/dailymed/
 COPY DDI-labels/ /var/www/html/DDI-labels/
 COPY PMC/ /var/www/html/PMC/
 COPY DDI-pdfs/ /var/www/html/DDI-pdfs/
 
 # debug
-#RUN ls -la /var/www/html/dailymed/*
-RUN ls /etc/apache2/sites-enabled/*
-RUN ls /etc/apache2/sites-available/*
+# RUN ls -la /var/www/html/dailymed/*
+# RUN ls /etc/apache2/sites-enabled/*
+# RUN ls /etc/apache2/sites-available/*
 
 # set up server name
 
@@ -46,8 +47,6 @@ RUN a2enconf localhost
 
 #RUN apache2ctl graceful
 RUN service apache2 restart
-
-#EXPOSE 80
 
 # Start apache2 server
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
