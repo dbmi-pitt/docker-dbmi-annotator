@@ -52,7 +52,7 @@ Deploy DBMI-Annotator on production mode
 (3) Run dbmi-annotator with all dependencies in docker container, takes 20 secs for setup all services
 
     $ cd dbmi-annotator
-    $ docker-compose up
+    $ docker-compose up -d
 
 ######################################################################
 Docker Administration
@@ -64,7 +64,7 @@ Docker clean and restart
 
 Stop and clean all processes (required for rerun docker-compose when made modifications)
 
-$ bash clean-docker-ps.sh
+$ bash scripts/clean-docker-ps.sh
 
 ----------------------------------------------------------------------
 Work in container
@@ -78,7 +78,7 @@ Delete annotations from host:
 ----------------------------------------------------------------------
 
 Truncate all data in docker containers
-$ bash recreate-docker-volumns.sh
+$ bash scripts/recreate-docker-volumns.sh
 
 Delete annotation in docker by condition
 $ docker exec dbmi-annotator curl -XDELETE 'http://elasticsearch:9200/annotator/annotation/_query?q=email:test@gmail.com'
