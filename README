@@ -51,8 +51,22 @@ Deploy DBMI-Annotator on production mode
 
 (3) Run dbmi-annotator with all dependencies in docker container, takes 20 secs for setup all services
 
+    $ bash scripts/clean-docker-ps.sh
     $ cd dbmi-annotator
     $ docker-compose up -d
+
+(4) Optional: add PMC articles in html for annotating
+
+    Currently supporting Pubmed centre article (PMC) and Dailymed product labeling (SPL)
+    
+    For PMC article:
+    $ docker cp /path/to/html apache2:/var/www/html/PMC/
+
+    Example: 
+    <1> we saved PMC article with pmcid 4536363 as PMC4536363
+    <2> copy the html resources to apache home dir in docker container apache2
+    $ docker cp PMC4536363.html apache2:/var/www/html/PMC/
+    $ docker cp PMC4536363_files apache2:/var/www/html/PMC/
 
 ######################################################################
 Docker Administration
