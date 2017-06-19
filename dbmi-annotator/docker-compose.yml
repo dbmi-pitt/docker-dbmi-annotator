@@ -12,7 +12,7 @@ volumes:
 
     article-list-volume:
         external: true
-	
+
     annotation-resources-volume:
         external: true
 
