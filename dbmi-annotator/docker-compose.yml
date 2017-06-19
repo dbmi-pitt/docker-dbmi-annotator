@@ -10,6 +10,12 @@ volumes:
     elastic-snapshot-volume:
         external: true
 
+    article-list-volume:
+        external: true
+	
+    annotation-resources-volume:
+        external: true
+
 services:
     postgres:   
         image: yin2/postgres-9.3:latest
@@ -44,6 +50,8 @@ services:
         ports:
             - 8085:80    
         container_name: "apache2"
+        volumes:
+            - annotation-resources-volume:/var/www/html
         networks:
             - app-net
 
@@ -59,6 +67,8 @@ services:
             - ELASTICSEARCH_HOST=elasticsearch
             - APACHE2_HOST=apache2
         container_name: "dbmi-annotator"
+        volumes:
+            - article-list-volume:/home/dbmi-annotator/article-list
         networks:
             - app-net
 

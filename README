@@ -43,11 +43,9 @@ Deploy DBMI-Annotator on production mode
     # RDF redirects
     RewriteRule /DDI-pdfs/(.*) http://localhost:8085/DDI-pdfs/$1 [P]
 
-(2) Create local volume for postgres and elasticsearch data mount point
+(2) Create local volumes for postgres and elasticsearch data mount point
 
-    $ docker volume create --name postgres-volume -d local
-    $ docker volume create --name elasticsearch-volume -d local
-    $ docker volume create --name elastic-snapshot-volume -d local
+    $ bash scripts/create-docker-volumns.sh
 
 (3) Run dbmi-annotator with all dependencies in docker container, takes 20 secs for setup all services
 
