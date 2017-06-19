@@ -78,6 +78,23 @@ Deploy DBMI-Annotator on production mode
     4.3 Recursively copy contents of directory into container apache2
     $ docker cp -L /home/websites/dbmi-dt-139.dbmi.pitt.edu/DDI-pdfs apache2:/var/www/html/
 
+    4.4 Configure source list on AnnotationPress main page. In docker container dbmi-annotator, add entry to "dbmi-annotator/article-list/", supporting publishers according to exists source list csv:
+
+    PMC: pmc-list.csv
+    PDF document: test-pdf-list.csv
+    Dailymed SPL: dailymed-list.csv    
+    FutureMedicine: future-list.csv
+    Sage: sage-list.csv
+    Taylor & Francis: taylor-list.csv
+    Wolters Kluwer: wolters-list.csv
+    Elsevier: elsevier-list.csv
+    Springer: springer-list.csv
+    Wiley: wiley-list.csv
+
+    convention for new entry in source list csv: <name of document>,<URL>
+    Refresh main page will update list of articles automatically, allowing configure at runtime
+
+
 ######################################################################
 Docker Administration
 ######################################################################
