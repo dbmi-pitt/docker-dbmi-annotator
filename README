@@ -75,7 +75,10 @@ Deploy DBMI-Annotator on production mode
     $ docker cp /home/websites/html/DDI-pdfs/Martin_2002_12445025.pdf apache2:/var/www/html/DDI-pdfs/
 
     Access the article by copy and paste the link to input box on main page
-    http://localhost/DDI-pdfs/Martin_2002_12445025.pdf 
+    http://localhost/DDI-pdfs/Martin_2002_12445025.pdf
+
+    4.3 Recursively copy contents of directory into container apache2
+    $ docker cp -L /home/websites/dbmi-dt-139.dbmi.pitt.edu/DDI-pdfs apache2:/var/www/html/
 
 ######################################################################
 Docker Administration
