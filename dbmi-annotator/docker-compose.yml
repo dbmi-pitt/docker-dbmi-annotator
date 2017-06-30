@@ -40,7 +40,7 @@ services:
         image: yin2/annotator-store:latest
         environment:
             - ELASTICSEARCH_HOST=elasticsearch
-        command: bash -c "sleep 15s; python run.py"
+        command: bash -c "sleep 25s; python run.py"
         container_name: "annotator-store"
         networks:
             - app-net
